@@ -4,6 +4,7 @@ Created on Mon May  3 11:30:32 2021
 
 @author: agata
 """
+import requests
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot  as plt  # imports necessery functions for charts
@@ -29,14 +30,23 @@ dataset_europe.head()
 dataset_europe.info()
 dataset_europe.describe()
 
+europe=[]
+
+
+
+
+
+
+
+
+
+
 #TESTING
 dataset_testing = pd.read_excel("Daily_testing.xlsx")         #https://www.ecdc.europa.eu/en/publications-data/covid-19-testing
 
 
 # HOSPITAL BEDS     #  https://data.worldbank.org/indicator/SH.MED.PHYS.ZS
 dataset_hopital_beds= pd.read_csv("API_SH.MED.BEDS.ZS_DS2_en_csv_v2_2253154.csv" )
-
-#ICU BEDS     #https://en.wikipedia.org/wiki/List_of_countries_by_hospital_beds
 
 
 # HEALTH CARE WORKERS ( PHYSICIANS + NURSES AND MIDWIVES)    
@@ -49,6 +59,8 @@ dataset_population=pd.read_csv("API_SP.POP.TOTL_DS2_en_csv_v2_2252106.csv")
 #GDP per capita  https://data.worldbank.org/indicator/NY.GDP.PCAP.CD?end=2019&locations=EU&start=1970&view=chart
 dataset_per_capita=pd.read_csv("API_NY.GDP.PCAP.CD_DS2_en_csv_v2_2252129.csv")
 
+#POPULATION DENSITY    https://data.worldbank.org/indicator/EN.POP.DNST     ( People per sqr. km)
+dataset_population_density =pd.read_csv("API_EN.POP.DNST_DS2_en_csv_v2_2253141.csv")
 
 # AGE MEDIAN
 
@@ -84,4 +96,4 @@ datset_change_retail_recreation=pd.read_csv("change-visitors-retail-recreation.c
 
 
 #Vaccination
-dataset_vaccination=pd.read_csv("daily-covid-vaccination-doses-per-capita")
+dataset_vaccination=pd.read_csv("daily-covid-vaccination-doses-per-capita.csv")
