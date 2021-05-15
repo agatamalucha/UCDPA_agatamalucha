@@ -43,13 +43,13 @@ dataset_hospital_beds= pd.read_csv("dataset_beds.csv" )
 
 """
 DATA SOURCE:                https://data.worldbank.org/indicator/SH.MED.NUMW.P3?end=2018&start=1960
-Dataset that contains number of hospital beds of each countr (per 1,000 people) 
+Dataset that contains number of nurses of each country (per 1,000 people) 
 """   
 dataset_nurses= pd.read_csv("dataset_nurses.csv" ) 
 
 """
 DATA SOURCE:                https://data.worldbank.org/indicator/SH.MED.PHYS.ZS?end=2018&start=1960
-Dataset that contains number of physician of each country (per 1,000 people) 
+Dataset that contains number of physicians of each country (per 1,000 people) 
 """   
 dataset_physicians=pd.read_csv("dataset_physicians.csv")
 
@@ -57,7 +57,8 @@ dataset_physicians=pd.read_csv("dataset_physicians.csv")
 ---------------------------- CLEANINIG DATASETS -------------------------------
 """
 
-"""CLEANING HOSPITAL BEDS DATASET
+"""
+CLEANING HOSPITAL BEDS DATASET
 """ 
 dataset_hospital_beds["Country Name"]=dataset_hospital_beds["Country Name"].str.replace("Czech Republic", "Czechia")
 dataset_hospital_beds["Country Name"]=dataset_hospital_beds["Country Name"].str.replace("Slovak Republic", "Slovakia")
@@ -67,7 +68,8 @@ dataset_hospital_beds=dataset_hospital_beds[dataset_hospital_beds["is_eu"]==True
 dataset_hospital_beds=dataset_hospital_beds[["Country Name", "2017"]]
 dataset_hospital_beds=dataset_hospital_beds.rename(columns={"Country Name":"country", "2017": "hospital_beds"})
 
-"""CLEANING NURSES DATASET
+"""
+CLEANING NURSES DATASET
 """
 dataset_nurses["Country Name"]=dataset_nurses["Country Name"].str.replace("Czech Republic", "Czechia")
 dataset_nurses["Country Name"]=dataset_nurses["Country Name"].str.replace("Slovak Republic", "Slovakia")

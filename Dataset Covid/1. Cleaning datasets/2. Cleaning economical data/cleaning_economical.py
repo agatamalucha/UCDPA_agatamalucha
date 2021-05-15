@@ -50,12 +50,6 @@ Dataset that contains GDP per capita of each country
 dataset_gdp=pd.read_csv("dataset_gdp.csv")
 
 """
-DATA SOURCE:                https://data.worldbank.org/indicator/EN.POP.DNST     
-Dataset that contains population density (People per sqr.km) 
-"""
-dataset_density=pd.read_csv("dataset_density.csv")
-
-"""
 DATA SOURCE: SCRAPED DATA- MEDIAN AGE   https://www.worlddata.info/average-age.php
 """
 
@@ -111,18 +105,6 @@ dataset_gdp=dataset_gdp[dataset_gdp["is_eu"]==True]
 dataset_gdp=dataset_gdp[["Country Name", "2019"]]
 dataset_gdp=dataset_gdp.rename(columns={"Country Name":"country", "2019":"gdp"})
 
-
-"""
-CLEANING DENSITY DATASET
-"""
-dataset_density["Country Name"]=dataset_density["Country Name"].str.replace("Czech Republic", "Czechia")
-dataset_density["Country Name"]=dataset_density["Country Name"].str.replace("Slovak Republic", "Slovakia")
-dataset_density["Country Name"]=np.where(dataset_density["Country Code"]=="ESP","Spain",dataset_density["Country Name"] )
-dataset_density['is_eu']=dataset_density["Country Name"].apply(lambda x: country_checker(x))
-dataset_density=dataset_density[dataset_density["is_eu"]==True]
-dataset_density=dataset_density[["Country Name", "2018"]]
-dataset_density=dataset_density.rename(columns={"Country Name":"country", "2018":"density_per_sqr_km"})
-
 """
 CLEANING MEDIAN AGE DATASET
 """
@@ -151,11 +133,10 @@ dataset_full_countries = pd.concat([missing_countries_data, dataset_median_age])
 
 
 """
----------------------------- MERGING DEPENDABLE VARIABLES DATASETS (POPULATION, GDP, DENSITY, MEDIAN AGE) WITH MAIN COVID DATASET-------------------------------
+---------------------------- MERGING DEPENDABLE VARIABLES DATASETS (POPULATION, GDP, MEDIAN AGE) WITH MAIN COVID DATASET-------------------------------
 """
 
-dataset=dataset_population.merge(dataset_gdp, on="country").merge(dataset_density, on="country")   
-
+dataset=dataset_population.merge(dataset_gdp, on="country").merge(dataset_full_countries, on="country")   
 
 dataset.to_csv("dataset_economical_cleaned.csv", index=False)
 

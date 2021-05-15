@@ -45,14 +45,16 @@ dataset_internal_movement=pd.read_csv("internal-movement-covid.csv")
 ---------------------------- CLEANINIG DATASETS -------------------------------
 """
 
-"""CLEANING SCHOOL CLOSURES DATASET
+"""
+CLEANING SCHOOL CLOSURES DATASET
 """
 dataset_schools['is_eu'] = dataset_schools["Entity"].apply(lambda x: country_checker(x))
 dataset_schools=dataset_schools[dataset_schools["is_eu"]==True]
 dataset_schools=dataset_schools[["Entity","Day",  "school_closures"]]
 dataset_schools=dataset_schools.rename(columns={"Entity":"country", "Day":"date"})
 
-"""CLEANING  INTERNAL MOVEMENT DATASET
+"""
+CLEANING  INTERNAL MOVEMENT DATASET
 """
 dataset_internal_movement['is_eu']=dataset_internal_movement["Entity"].apply(lambda x: country_checker(x))
 dataset_internal_movement=dataset_internal_movement[dataset_internal_movement["is_eu"]==True]
