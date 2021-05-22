@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Covid Pandemic Analysis</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css"
+        integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+  <script src="https://kit.fontawesome.com/cb5db23bd5.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="resources/css/custom-styles.css" rel="stylesheet"/>
+</head>
+<body>
+<div>
+  <!-- NAVIGATION -->
+  <nav class="row navbar navbar-default top-navbar" role="navigation">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="index.html">
+        <strong> Covid Pandemic Analysis</strong>
+      </a>
+    </div>
+  </nav>
+
+  <div id="main-page">
+    <div class="row row-title center-align">
+      <h1 class="underline-grey">Project Introduction</h1>
+    </div>
+    <br><br>
+    <div class="row row-title">
+      <h2>Problem description</h2>
+    </div>
+    <div class="row row-description">
+      <div class="card card-transparent">
+        <p>
+          Year 2020 was undoubtedly dominated by the pandemic caused by the new SARS-CoV-2 coronavirus. The pandemic
+          has created many challenges for governments, enterprises and society globally. All countries in the world have
+          been affected by the illness. Some of them have been hit harder than the others. As a healthcare worker who
+          works in the hospital, I had great interest in all information about development of this disease, and I was
+          especially concerned about situation in Europe.
+
+        </p>
+        <p>
+          In every country in the world governments had to make difficult decision how to save public health from COVID
+          illness. Were they successful? Which EU countries were hit the most with Covid cases and deaths? Did high
+          numbers of hospital beds and healthcare workers helped in keeping low number of patient’s deaths?
+          Is there any correlation between countries with low GDP and higher number of COVID cases? Did school closures
+          and restriction of movement make any difference keeping the low number of cased? Were population with higher
+          median age in worse situation through out the year of pandemic? There are a lot of questions and I would like
+          to find answers for some of them.
+
+        </p>
+        <div class="row">
+          <div class="col s3 plain-element"></div>
+          <div class="col s6 plain-element">
+            <img src="resources/img/berlin-station.jpg" class="img-responsive img-plot" alt="berlin station">
+            <span class="img-description">Abadonend Berlin Central Station</span>
+          </div>
+          <div class="col s3 plain-element"></div>
+        </div>
+
+      </div>
+    </div>
+    <br>
+    <div class="row row-title">
+      <h2>Project Scope</h2>
+    </div>
+    <div class="row row-description">
+      <div class="card card-transparent">
+        <p>
+          The scope of “Covid cases in Europe” Project is to identify patterns, common elements among European Union
+          countries with high and low number of Covid new cases and new deaths. This project will target health system
+          elements, selected demographic, economical characteristics and internal countries policies.
+          In project scope:
+        </p>
+        <ul>
+          <li>• &nbsp; Project will target only current European Union countries.</li>
+          <li>• &nbsp; Project will target period of time between 2020-01-03 and 2021-05-03.</li>
+          <li>• &nbsp; Project will target only the following elements of demographics characteristics: GDP per capita ( USD), median age.</li>
+          <li>• &nbsp; Project will target only the following elements of healthcare system characteristics: hospital
+            beds, nurses and midwives, physicians per 1000 population.</li>
+          <li>• &nbsp; Project will target two specified internal restrictions: School closures , internal movement
+            restrictions for each day in the period,  where "0" -no restrictions and "3"- highest restriction.
+          </li>
+        </ul>
+      </div>
+    </div>
+    <br>
+    <div class="row row-title center-align">
+      <h1 class="underline-grey">Dataset Sources</h1>
+    </div>
+    <br><br>
+    <div class="row row-title">
+      <h2>COVID Cases & Deaths</h2>
+    </div>
+    <div class="row row-description">
+      <div class="card card-transparent">
+        <p>
+          Dataset have been provided by World Health Organization website in .csv format. Original dataset
+          contains number of new cases, cumulative cases, and new deaths and cumulative deaths. Dataset has a minimum
+          amount of missing data and contains worldwide daily data. In my project I use number of new cases and deaths
+          and they will be recalculated to show cases and deaths per 10 000 population.
+        </p>
+        <p>Source Link: <a target="_blank" class="" href="https://covid19.who.int/WHO-COVID-19-global-data.csv">WHO
+          COVID-19 Data </a></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s3 plain-element"></div>
+      <div class="col s6 plain-element">
+        <img src="resources/img/covid-test.jpg" class="img-responsive img-plot" alt="covid test">
+        <span class="img-description">Covid-19 Test Tube</span>
+      </div>
+      <div class="col s3 plain-element"></div>
+    </div>
+
+    <br>
+    <div class="row row-description">
+      <div class="col s8 plain-element">
+        <div class="row plain-element">
+          <h2>Economical and demographic datasets</h2>
+        </div>
+        <div class="card card-transparent">
+          <p>
+            Economical dataset of “GDP” , “population”  have been sourced from the WorldBank
+            website
+            and imported as .csv files.Demographic data of “Median Age” has been scrapped from the website to show
+            ability
+            to find different HTML
+            components, to use BeautifulSoup module and to import elements into .csv file for data analysis.
+          </p>
+          <p>Source Link: <a target="_blank" class=""
+                             href="https://data.worldbank.org/indicator/SP.POP.TOTL?locations=EU">World Bank Population
+            Data </a></p>
+          <p>Source Link: <a target="_blank" class=""
+                             href="https://data.worldbank.org/indicator/NY.GDP.PCAP.CD?end=2019&locations=EU&start=1970&view=chart">World
+            Bank GDP Data </a></p>
+          <p>Scraped Data: <a target="_blank" class="" href="https://www.worlddata.info/average-age.php">World Data
+            Median Age </a></p>
+        </div>
+      </div>
+      <div class="col s4 plain-element">
+        <img src="resources/img/europe-gdp.png" class="img-responsive img-plot">
+
+      </div>
+
+    </div>
+    <br>
+    <div class="row row-description">
+      <div class="col s8 plain-element">
+        <div class="row plain-element">
+          <h2>Healthcare dataset</h2>
+        </div>
+        <div class="card card-transparent">
+          <p>
+            Three major factors to be considered when analyzing healthcare services in each European countries are:
+            available hospital beds, amount of nursing staff and number of physicians per 1000 population.
+            Best website to acquire all necessary data is World Bank where the relevant data is being collected since
+            1960.
+          </p>
+          <p>Source Link: <a target="_blank" class="" href="https://data.worldbank.org/indicator/SH.MED.BEDS.ZS">World
+            Bank Hospital Beds Data </a></p>
+          <p>Source Link: <a target="_blank" class=""
+                             href="https://data.worldbank.org/indicator/SH.MED.NUMW.P3?end=2018&start=1960">World Bank
+            Nurses Data </a></p>
+          <p>Source Link: <a target="_blank" class=""
+                             href="https://data.worldbank.org/indicator/SH.MED.PHYS.ZS?end=2018&start=1960">World Bank
+            Physicians Data </a></p>
+        </div>
+      </div>
+
+      <div class="col s4 plain-element">
+        <img src="resources/img/healthcare.jpg" class="img-responsive img-plot">
+
+      </div>
+    </div>
+    <br>
+    <div class="row row-description">
+      <div class="col s8 plain-element">
+        <div class="row plain-element">
+          <h2>Internal policies dataset</h2>
+        </div>
+        <div class="card card-transparent">
+          <p>
+            Probably the most curious case and also the subject that create a lot of controversy is impact of the lockdown policies and strategies on flattening COVID-19 cases curve.
+            After some research, I've found two relevant datasets. First one shows when schools were closed in each European country, second one refers to movement restrictions.
+            Both of them can be found in "Our World in Data" dataset collection.
+          </p>
+          <p>Source Link: <a target="_blank" class=""
+                             href="https://ourworldindata.org/policy-responses-covid">Our World in Data Policy Responses Data </a></p>
+        </div>
+      </div>
+      <div class="col s4 plain-element">
+        <img src="resources/img/covid-closed.jpg" class="img-responsive img-plot">
+
+      </div>
+
+    </div>
+    <br><br><br>
+
+    <div class="row center-align">
+      <a class="btn btn-proceed" href="datasets-analysis.html">
+      <span>Datasets Analysis &nbsp;<i class="far fa-arrow-alt-circle-right"></i>
+      </span>
+      </a>
+      <br><br>
+    </div>
+  </div>
+</div>
+<div class="footer">
+  <p>All Rights Reserved • Agata Malucha</p>
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Covid Pandemic Analysis</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css"
+        integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+  <script src="https://kit.fontawesome.com/cb5db23bd5.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="resources/css/custom-styles.css" rel="stylesheet"/>
+</head>
+<body>
+<div>
+  <!-- NAVIGATION -->
+  <nav class="row navbar navbar-default top-navbar" role="navigation">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="index.html">
+        <strong> Covid Pandemic Analysis</strong>
+      </a>
+    </div>
+  </nav>
+  <div id="main-page">
+    <div class="row row-title center-align">
+      <h1 class="underline-grey">Datasets Analysis</h1>
+    </div>
+    <br><br>
+    <div class="row row-description">
+      <div class="col s12 plain-element">
+        <div class="row plain-element">
+          <h2>Dataset Economical Analysis</h2>
+        </div>
+        <div class="card card-transparent">
+          <p>
+            First task when preprocessing economical datasets was to remove non-EU countries, which was done with custom
+            lambda function. Also, some country naming discrepancies were found (Czech Republic - Czechia). Some median
+            age data was missing so dataframe had to be appended with relevant values.
+            The whole cleaning process was finished with merging all datasets into one by country column. Visualizing
+            dataset in a form of the bar chart give us some additional insights. You can easily observe that there is
+            16 countries where GDP range is between 10,000 and 30,000 USD/capita  and 11 countries with GDP between 30,000
+            and 115,000 with much larger spread. When you also take for considaration the 75% centile , the amount (47614.01)
+            is much lower that the max value and this shows that there are 2 high value outliers, Ireland and Luxemburg.
+          </p>
+          <div class="col s5 plain-element">
+            <p>Dataset Cleaner: <a href="resources/cleaners/cleaning_economical.py" download>Cleaning Economical
+              Dataset </a></p>
+            <p>Dataset Analysis: <a href="resources/description/dataset_economical_analysis.py" download
+                                    class="font-green"
+            >Economical Dataset Analysis</a></p>
+            <table style="width:100%">
+              <tr>
+                <th></th>
+                <th>population</th>
+                <th>gdp (USD per capita)</th>
+              </tr>
+              <tr>
+                <td>count</td>
+                <td>27</td>
+                <td>27</td>
+              </tr>
+              <tr>
+                <td>mean</td>
+                <td>16574520.04</td>
+                <td>35299.03555</td>
+              </tr>
+              <tr>
+                <td>std</td>
+                <td>22282343</td>
+                <td>23216.76212</td>
+              </tr>
+              <tr>
+                <td>min</td>
+                <td>502653</td>
+                <td>9828.148515</td>
+              </tr>
+              <tr>
+                <td>25%</td>
+                <td>3427172</td>
+                <td>19424.40574</td>
+              </tr>
+              <tr>
+                <td>50%</td>
+                <td>8877067</td>
+                <td>27858.371</td>
+              </tr>
+              <tr>
+                <td>75%</td>
+                <td>14408452.5</td>
+                <td><b style="color:blue"> 47614.01879</b></td>
+              </tr>
+              <tr>
+                <td>max</td>
+                <td>83132799</td>
+                <td><b style="color:blue">  114704.5942</b> </td>
+              </tr>
+            </table>
+          </div>
+          <div class="col s1 plain-element">
+          </div>
+          <div class="col s6 plain-element">
+            <img src="resources/img/dataset_economical_2.png" class="img-responsive img-plot">
+          </div>
+        </div>
+      </div>
+    </div>
+    <br><br>
+    <div class="row row-description">
+      <div class="col s12 plain-element">
+        <div class="row plain-element">
+          <h2>Dataset Healthcare Analysis</h2>
+        </div>
+        <div class="card card-transparent">
+          <p>
+            After removing non-EU countries and standardising their names, next step was to keep only the recent data
+            column as datasets contain data from year 1960.
+            Null value gaps were filed with most recent non-null data from previous years. Once all three datasets were
+            merged into one by country column, I got curious if there is simple linear correlation between country's gdp
+            and a size of a healthcare sector. Common sense would be to say, that wealthy country has more doctors than
+            the poor one. So I did some analysis in that subject.
+          </p>
+          <div class="row plain-element">
+            <div class="col s5 plain-element">
+              <p>Dataset Cleaner: <a href="resources/cleaners/cleaning_healthcare.py" download>Cleaning Healthcare
+                Dataset </a></p>
+              <p>Dataset Analysis: <a href="resources/description/dataset_healthcare_analysis.py" download
+                                      class="font-green"
+              >Healthcare Dataset Analysis</a></p>
+              <br>
+
+            </div>
+            <div class="col s1 plain-element"></div>
+            <div class="col s6 plain-element">
+
+            </div>
+          </div>
+          <div class="row plain-element">
+            <div class="col s5 plain-element">
+              <table class="table table-bordered table-hover table-condensed">
+                <thead>
+                <tr>
+                  <th title="Field #1"></th>
+                  <th title="Field #2">physicians</th>
+                  <th title="Field #3">nurses</th>
+                  <th title="Field #4">hospital_beds</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td>count</td>
+                  <td>27.0</td>
+                  <td>27.0</td>
+                  <td>27.0</td>
+                </tr>
+                <tr>
+                  <td>mean</td>
+                  <td>3.59</td>
+                  <td>8.46</td>
+                  <td>4.99</td>
+                </tr>
+                <tr>
+                  <td>std</td>
+                  <td>0.8428894</td>
+                  <td>3.2477669</td>
+                  <td>1.7112389</td>
+                </tr>
+                <tr>
+                  <td>min</td>
+                  <td>1.9509</td>
+                  <td>3.5534</td>
+                  <td>2.21</td>
+                </tr>
+                <tr>
+                  <td>25%</td>
+                  <td>3.0343</td>
+                  <td>5.951499</td>
+                  <td>3.335</td>
+                </tr>
+                <tr>
+                  <td>50%</td>
+                  <td>3.4664</td>
+                  <td>7.9665</td>
+                  <td>4.69</td>
+                </tr>
+                <tr>
+                  <td>75%</td>
+                  <td>4.01465</td>
+                  <td>10.90885</td>
+                  <td>6.59</td>
+                </tr>
+                <tr>
+                  <td>max</td>
+                  <td>5.4036</td>
+                  <td>15.5735</td>
+                  <td>8.0</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col s1 plain-element"></div>
+            <div class="col s6 plain-element">
+              <table>
+                <col>
+                <colgroup span="3"></colgroup>
+                <colgroup span="3"></colgroup>
+                <tr>
+                  <th colspan="3" class="center-align" scope="colgroup">Top 5 Highest</th>
+                  <th colspan="3" class="center-align" scope="colgroup">Top 5 Lowest</th>
+                </tr>
+                <tr>
+                  <th scope="col">Physicians</th>
+                  <th scope="col">Nurses</th>
+                  <th scope="col">Beds</th>
+                  <th scope="col">Physicians</th>
+                  <th scope="col">Nurses</th>
+                  <th scope="col">Beds</th>
+                </tr>
+                <tr>
+                  <td>Greece</td>
+                  <td>Ireland</td>
+                  <td>Germany</td>
+                  <td>Cyprus</td>
+                  <td>Greece</td>
+                  <td>Sweden</td>
+                </tr>
+                <tr>
+                  <td>Austria</td>
+                  <td>Finland</td>
+                  <td>Bulgaria</td>
+                  <td>Romania</td>
+                  <td>Latvia</td>
+                  <td>Denmark</td>
+                </tr>
+                <tr>
+                  <td>Portugal</td>
+                  <td>Germany</td>
+                  <td>Austria</td>
+                  <td>Poland</td>
+                  <td>Bulgaria</td>
+                  <td>Spain</td>
+                </tr>
+                <tr>
+                  <td>x</td>
+                  <td>x</td>
+                  <td>x</td>
+                  <td>x</td>
+                  <td>x</td>
+                  <td>x</td>
+                </tr>
+                <tr>
+                  <td>x</td>
+                  <td>x</td>
+                  <td>x</td>
+                  <td>x</td>
+                  <td>x</td>
+                  <td>x</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <br>
+          <div class="row plain-element">
+            <div class="col s6 plain-element">
+              <p>
+                First step was to merge dataset with gdp column from economical dataset. Then I had to normalize the
+                data to keep everything in range 0-1, where 1 is the top value and 0 is the lowest.
+                This way it'll be easier for me to compare different value sizes. Once shown on the graph to the right,
+                it's hard to say what top 10 countries have in common.
+              </p>
+            </div>
+            <div class="col s1 plain-element">
+            </div>
+            <div class="col s5 plain-element">
+              <img src="resources/img/dataset_healthcare_2.png" class="img-responsive img-plot">
+            </div>
+          </div>
+          <br>
+          <div class="row plain-element">
+            <div class="col s5 plain-element">
+              <img src="resources/img/dataset_healthcare_3.png" class="img-responsive img-plot">
+            </div>
+            <div class="col s1 plain-element">
+            </div>
+            <div class="col s6 plain-element">
+              <p>
+                Much clearer situation is when it comes to nursing staff. Ireland takes the lead in Europe and
+                generally, rich countries have more nurses than the poor ones.
+                I think the main cause would be that the graduated nurses, often drastically underpaid are migrating for
+                better job contracts.
+              </p>
+
+            </div>
+          </div>
+          <br>
+          <div class="row plain-element">
+            <div class="col s6 plain-element">
+              Again, not that clear situation with hospital beds. But two conclusions can be made. First is that
+              Post-soviet countries have more hospital beds due to the fact, that Soviet Union was preparing the
+              invasion on the West and those countries suppose to be the battlefield.
+              Secondly interesting observation is Sweden - I think that has a very low number of hospital beds forced government
+              to seek herd immunity instead of taking a path of the other European countries.
+
+            </div>
+            <div class="col s1 plain-element">
+            </div>
+            <div class="col s5 plain-element">
+              <img src="resources/img/dataset_healthcare_4.png" class="img-responsive img-plot">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row plain-element">
+        <div class="col s4 plain-element">
+
+        </div>
+        <div class="col s4 plain-element">
+
+        </div>
+        <div class="col s4 plain-element">
+
+        </div>
+      </div>
+    </div>
+    <br><br>
+    <div class="row row-description">
+      <div class="col s12 plain-element">
+        <div class="row plain-element">
+          <h2>Dataset Policies Analysis</h2>
+        </div>
+        <div class="card card-transparent">
+          <div class="row plain-element">
+            <p>
+              Here is the most controversial part of my analysis. First task was to transform the dataset the way,
+              that we
+              could see the number of days per restriction level per country.
+              In the future analysis I'll try to observe if there is any correlation between gdp and number of days in
+              lockdown. Also, I'll try to measure how effective was each restriction and if it's quick application prevented case spikes.
+            </p>
+          </div>
+          <div class="row plain-element">
+            <div class="col s5 plain-element">
+              <p>Dataset Cleaner: <a href="resources/cleaners/cleaning_policies.py" download>Cleaning Policies
+                Dataset </a></p>
+              <p>Dataset Analysis: <a href="resources/description/dataset_policies_analysis.py" download
+                                      class="font-green"
+              >Policies Dataset Analysis</a></p>
+            </div>
+            <div class="col s2 plain-element"></div>
+            <div class="col s5 plain-element">
+
+            </div>
+          </div>
+          <br>
+          <div class="row plain-element">
+            <div class="col s6 plain-element">
+              <table class="table table-bordered table-hover table-condensed">
+                <thead>
+                <tr>
+                  <th colspan="5" class="center-align" scope="colgroup">Number of days in each level of school closure
+                    restrictions
+                  </th>
+                </tr>
+                <tr>
+                  <th title="Field #1">Country</th>
+                  <th title="Field #2">Level 0 <span style="font-size: 10px;"> <br> No measures<br> required </span></th>
+                  <th title="Field #3">Level 1 <span style="font-size: 10px;"> <br> Recommended<br> by government</span></th>
+                  <th title="Field #4">Level 2 <span style="font-size: 10px;"> <br> Required at <br> some levels</span></th>
+                  <th title="Field #5">Level 3 <span style="font-size: 10px;"> <br> Required <br> by government</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td>Austria</td>
+                  <td align="right">55</td>
+                  <td align="right">171</td>
+                  <td align="right">144</td>
+                  <td align="right">89</td>
+                </tr>
+                <tr>
+                  <td>Belgium</td>
+                  <td align="right">53</td>
+                  <td align="right">267</td>
+                  <td align="right">127</td>
+                  <td align="right">21</td>
+                </tr>
+                <tr>
+                  <td>Bulgaria</td>
+                  <td align="right">44</td>
+                  <td align="right">44</td>
+                  <td align="right" style="border: 1px solid red;">294</td>
+                  <td align="right">82</td>
+                </tr>
+                <tr>
+                  <td>Croatia</td>
+                  <td align="right">52</td>
+                  <td align="right">179</td>
+                  <td align="right">175</td>
+                  <td align="right">59</td>
+                </tr>
+                <tr>
+                  <td>Cyprus</td>
+                  <td align="right">52</td>
+                  <td align="right">55</td>
+                  <td align="right">268</td>
+                  <td align="right">86</td>
+                </tr>
+                <tr>
+                  <td>Czechia</td>
+                  <td align="right">50</td>
+                  <td align="right">106</td>
+                  <td align="right">137</td>
+                  <td align="right">175</td>
+                </tr>
+                <tr>
+                  <td>Denmark</td>
+                  <td align="right" style="border: 1px solid red;">71</td>
+                  <td align="right">101</td>
+                  <td align="right">193</td>
+                  <td align="right">95</td>
+                </tr>
+                <tr>
+                  <td>Estonia</td>
+                  <td align="right">55</td>
+                  <td align="right">254</td>
+                  <td align="right">60</td>
+                  <td align="right">93</td>
+                </tr>
+                <tr>
+                  <td>Finland</td>
+                  <td align="right">57</td>
+                  <td align="right">203</td>
+                  <td align="right">200</td>
+                  <td align="right" style="border: 1px solid green;">0</td>
+                </tr>
+                <tr>
+                  <td>France</td>
+                  <td align="right">41</td>
+                  <td align="right">182</td>
+                  <td align="right">175</td>
+                  <td align="right">70</td>
+                </tr>
+                <tr>
+                  <td>Germany</td>
+                  <td align="right" style="border: 1px solid green;">36</td>
+                  <td align="right">135</td>
+                  <td align="right">91</td>
+                  <td align="right">205</td>
+                </tr>
+                <tr>
+                  <td>Greece</td>
+                  <td align="right">44</td>
+                  <td align="right">143</td>
+                  <td align="right">89</td>
+                  <td align="right">181</td>
+                </tr>
+                <tr>
+                  <td>Hungary</td>
+                  <td align="right">50</td>
+                  <td align="right">70</td>
+                  <td align="right">226</td>
+                  <td align="right">120</td>
+                </tr>
+                <tr>
+                  <td>Ireland</td>
+                  <td align="right">52</td>
+                  <td align="right">42</td>
+                  <td align="right">199</td>
+                  <td align="right">166</td>
+                </tr>
+                <tr>
+                  <td>Italy</td>
+                  <td align="right">33</td>
+                  <td align="right">22</td>
+                  <td align="right">150</td>
+                  <td align="right" style="border: 1px solid red;">261</td>
+                </tr>
+                <tr>
+                  <td>Latvia</td>
+                  <td align="right">52</td>
+                  <td align="right">24</td>
+                  <td align="right">199</td>
+                  <td align="right">192</td>
+                </tr>
+                <tr>
+                  <td>Lithuania</td>
+                  <td align="right">52</td>
+                  <td align="right">72</td>
+                  <td align="right">248</td>
+                  <td align="right">96</td>
+                </tr>
+                <tr>
+                  <td>Luxembourg</td>
+                  <td align="right">55</td>
+                  <td align="right" style="border: 1px solid red;">277</td>
+                  <td align="right">71</td>
+                  <td align="right">63</td>
+                </tr>
+                <tr>
+                  <td>Malta</td>
+                  <td align="right">52</td>
+                  <td align="right">257</td>
+                  <td align="right" style="border: 1px solid green;">15</td>
+                  <td align="right">138</td>
+                </tr>
+                <tr>
+                  <td>Netherlands</td>
+                  <td align="right">51</td>
+                  <td align="right">188</td>
+                  <td align="right">117</td>
+                  <td align="right">110</td>
+                </tr>
+                <tr>
+                  <td>Poland</td>
+                  <td align="right">51</td>
+                  <td align="right">48</td>
+                  <td align="right">170</td>
+                  <td align="right">197</td>
+                </tr>
+                <tr>
+                  <td>Portugal</td>
+                  <td align="right">48</td>
+                  <td align="right">150</td>
+                  <td align="right">141</td>
+                  <td align="right">128</td>
+                </tr>
+                <tr>
+                  <td>Romania</td>
+                  <td align="right">50</td>
+                  <td align="right" style="border: 1px solid green;">0</td>
+                  <td align="right">217</td>
+                  <td align="right">201</td>
+                </tr>
+                <tr>
+                  <td>Slovakia</td>
+                  <td align="right">49</td>
+                  <td align="right">33</td>
+                  <td align="right">212</td>
+                  <td align="right">168</td>
+                </tr>
+                <tr>
+                  <td>Slovenia</td>
+                  <td align="right">55</td>
+                  <td align="right">141</td>
+                  <td align="right">107</td>
+                  <td align="right">159</td>
+                </tr>
+                <tr>
+                  <td>Spain</td>
+                  <td align="right">48</td>
+                  <td align="right">169</td>
+                  <td align="right">134</td>
+                  <td align="right">108</td>
+                </tr>
+                <tr>
+                  <td>Sweden</td>
+                  <td align="right">56</td>
+                  <td align="right">144</td>
+                  <td align="right">268</td>
+                  <td align="right" style="border: 1px solid green;">0</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col s1 plain-element">
+            </div>
+            <div class="col s5 plain-element">
+              <table class="table table-bordered table-hover table-condensed">
+                <thead>
+                <tr>
+                  <th colspan="5" class="center-align" scope="colgroup">Number of days in each level of internal
+                    movement
+                    restrictions
+                  </th>
+                </tr>
+                <tr>
+                  <th title="Field #1">Country</th>
+                  <th title="Field #2">Level 0 <span style="font-size: 10px;"> <br> No measures<br> required </span></th>
+                  <th title="Field #3">Level 1 <span style="font-size: 10px;"> <br> Recommended<br> by government</span></th>
+                  <th title="Field #4">Level 2 <span style="font-size: 10px;"> <br> Required at <br> some levels</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td>Austria</td>
+                  <td align="right">193</td>
+                  <td align="right">138</td>
+                  <td align="right">144</td>
+                </tr>
+                <tr>
+                  <td>Belgium</td>
+                  <td align="right">367</td>
+                  <td align="right">12</td>
+                  <td align="right">127</td>
+                </tr>
+                <tr>
+                  <td>Bulgaria</td>
+                  <td align="right">415</td>
+                  <td align="right" style="border: 1px solid green;">0</td>
+                  <td align="right" style="border: 1px solid red;">294</td>
+                </tr>
+                <tr>
+                  <td>Croatia</td>
+                  <td align="right">402</td>
+                  <td align="right" style="border: 1px solid green;">0</td>
+                  <td align="right">175</td>
+                </tr>
+                <tr>
+                  <td>Cyprus</td>
+                  <td align="right">232</td>
+                  <td align="right">76</td>
+                  <td align="right">268</td>
+                </tr>
+                <tr>
+                  <td>Czechia</td>
+                  <td align="right">165</td>
+                  <td align="right">114</td>
+                  <td align="right">137</td>
+                </tr>
+                <tr>
+                  <td>Denmark</td>
+                  <td align="right">380</td>
+                  <td align="right">80</td>
+                  <td align="right">193</td>
+                </tr>
+                <tr>
+                  <td>Estonia</td>
+                  <td align="right">407</td>
+                  <td align="right" style="border: 1px solid green;">0</td>
+                  <td align="right">60</td>
+                </tr>
+                <tr>
+                  <td>Finland</td>
+                  <td align="right">386</td>
+                  <td align="right">50</td>
+                  <td align="right">200</td>
+                </tr>
+                <tr>
+                  <td>France</td>
+                  <td align="right">157</td>
+                  <td align="right">113</td>
+                  <td align="right">175</td>
+                </tr>
+                <tr>
+                  <td>Germany</td>
+                  <td align="right">98</td>
+                  <td align="right">106</td>
+                  <td align="right">91</td>
+                </tr>
+                <tr>
+                  <td>Greece</td>
+                  <td align="right" style="border: 1px solid green;">60</td>
+                  <td align="right">135</td>
+                  <td align="right">89</td>
+                </tr>
+                <tr>
+                  <td>Hungary</td>
+                  <td align="right">282</td>
+                  <td align="right">147</td>
+                  <td align="right">226</td>
+                </tr>
+                <tr>
+                  <td>Ireland</td>
+                  <td align="right">108</td>
+                  <td align="right">58</td>
+                  <td align="right">199</td>
+                </tr>
+                <tr>
+                  <td>Italy</td>
+                  <td align="right">173</td>
+                  <td align="right" style="border: 1px solid green;">0</td>
+                  <td align="right">150</td>
+                </tr>
+                <tr>
+                  <td>Latvia</td>
+                  <td align="right" style="border: 1px solid red;">467</td>
+                  <td align="right" style="border: 1px solid green;">0</td>
+                  <td align="right">199</td>
+                </tr>
+                <tr>
+                  <td>Lithuania</td>
+                  <td align="right">208</td>
+                  <td align="right">145</td>
+                  <td align="right">248</td>
+                </tr>
+                <tr>
+                  <td>Luxembourg</td>
+                  <td align="right">313</td>
+                  <td align="right">67</td>
+                  <td align="right">71</td>
+                </tr>
+                <tr>
+                  <td>Malta</td>
+                  <td align="right">331</td>
+                  <td align="right">21</td>
+                  <td align="right" style="border: 1px solid green;">15</td>
+                </tr>
+                <tr>
+                  <td>Netherlands</td>
+                  <td align="right">175</td>
+                  <td align="right" style="border: 1px solid red;">291</td>
+                  <td align="right">117</td>
+                </tr>
+                <tr>
+                  <td>Poland</td>
+                  <td align="right">195</td>
+                  <td align="right">206</td>
+                  <td align="right">170</td>
+                </tr>
+                <tr>
+                  <td>Portugal</td>
+                  <td align="right">271</td>
+                  <td align="right">90</td>
+                  <td align="right">141</td>
+                </tr>
+                <tr>
+                  <td>Romania</td>
+                  <td align="right">228</td>
+                  <td align="right">9</td>
+                  <td align="right">217</td>
+                </tr>
+                <tr>
+                  <td>Slovakia</td>
+                  <td align="right">125</td>
+                  <td align="right">171</td>
+                  <td align="right">212</td>
+                </tr>
+                <tr>
+                  <td>Slovenia</td>
+                  <td align="right">253</td>
+                  <td align="right">4</td>
+                  <td align="right">107</td>
+                </tr>
+                <tr>
+                  <td>Spain</td>
+                  <td align="right">61</td>
+                  <td align="right">104</td>
+                  <td align="right">134</td>
+                </tr>
+                <tr>
+                  <td>Sweden</td>
+                  <td align="right">224</td>
+                  <td align="right">244</td>
+                  <td align="right">268</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+<div class="footer">
+  <p>All Rights Reserved • Agata Malucha</p>
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+
+</body>
+</html>
+
