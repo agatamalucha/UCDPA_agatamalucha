@@ -4,16 +4,7 @@ Created on Tue May  4 18:37:11 2021
 
 @author: agata
 """
-
 import pandas as pd
-import numpy as np
-
-
-"""
----------- OPENING MAIN COVID DATASET (INDEPENDABLE VARIABLE) -----------------
-"""
-
-dataset_covid =  pd.read_csv("dataset_covid_cleaned.csv")
 
 """
 ---------------------------- COMMON FUNCTIONS  --------------------------------
@@ -45,14 +36,16 @@ dataset_internal_movement=pd.read_csv("internal-movement-covid.csv")
 ---------------------------- CLEANINIG DATASETS -------------------------------
 """
 
-"""CLEANING SCHOOL CLOSURES DATASET
+"""
+CLEANING SCHOOL CLOSURES DATASET
 """
 dataset_schools['is_eu'] = dataset_schools["Entity"].apply(lambda x: country_checker(x))
 dataset_schools=dataset_schools[dataset_schools["is_eu"]==True]
 dataset_schools=dataset_schools[["Entity","Day",  "school_closures"]]
 dataset_schools=dataset_schools.rename(columns={"Entity":"country", "Day":"date"})
 
-"""CLEANING  INTERNAL MOVEMENT DATASET
+"""
+CLEANING  INTERNAL MOVEMENT DATASET
 """
 dataset_internal_movement['is_eu']=dataset_internal_movement["Entity"].apply(lambda x: country_checker(x))
 dataset_internal_movement=dataset_internal_movement[dataset_internal_movement["is_eu"]==True]
@@ -62,11 +55,11 @@ dataset_internal_movement=dataset_internal_movement.rename(columns={"Entity":"co
 
 
 """
------ MERGING DEPENDABLE VARIABLES DATASETS (SCHOOL CLOSURES, INTERNAL MOVEMENT) WITH MAIN COVID DATASET-------------------------------
+----- MERGING INDEPENDABLE VARIABLES DATASETS SCHOOL CLOSURES, INTERNAL MOVEMENT-------------------------------
 """
 
 dataset = dataset_schools.merge(dataset_internal_movement, how="left", on=["country", "date"])
-# Filing missing data with 0 value , we undestand that country as it's unknown we can assume that that country didn't apply restriction 
+# Filing missing data with 0 value ,  level of restriction is unknown ,  we can assume that that country didn't apply restriction  
 dataset =dataset.fillna(0)  
 dataset.to_csv("dataset_policies_cleaned.csv", index=False)
 

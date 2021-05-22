@@ -40,21 +40,23 @@
             age data was missing so dataframe had to be appended with relevant values.
             The whole cleaning process was finished with merging all datasets into one by country column. Visualizing
             dataset in a form of the bar chart give us some additional insights. You can easily observe that there is
-            16 countries where GDP range is between 10,000 and 30,000 USD/capita  and 11 countries with GDP between 30,000
-            and 115,000 with much larger spread. When you also take for considaration the 75% centile , the amount (47614.01)
-            is much lower that the max value and this shows that there are 2 high value outliers, Ireland and Luxemburg.
+            16 countries where GDP range is between 10,000 and 30,000 USD/capita and 11 countries with GDP between
+            30,000
+            and 115,000 with much larger spread. When you also take for consideration the 75% centile , the amount
+            (47614.01)
+            is much lower that the max value and this shows that there are 2 high value outliers, Ireland and Luxembourg.
           </p>
           <div class="col s5 plain-element">
             <p>Dataset Cleaner: <a href="resources/cleaners/cleaning_economical.py" download>Cleaning Economical
               Dataset </a></p>
-            <p>Dataset Analysis: <a href="resources/description/dataset_economical_analysis.py" download
+            <p>Dataset Analysis: <a href="resources/analysis/dataset_economical_analysis.py" download
                                     class="font-green"
             >Economical Dataset Analysis</a></p>
             <table style="width:100%">
               <tr>
                 <th></th>
                 <th>population</th>
-                <th>gdp (USD per capita)</th>
+                <th>GDP (USD per capita)</th>
               </tr>
               <tr>
                 <td>count</td>
@@ -94,13 +96,13 @@
               <tr>
                 <td>max</td>
                 <td>83132799</td>
-                <td><b style="color:blue">  114704.5942</b> </td>
+                <td><b style="color:blue"> 114704.5942</b></td>
               </tr>
             </table>
           </div>
           <div class="col s1 plain-element">
           </div>
-          <div class="col s6 plain-element">
+          <div class="col s12 m6 plain-element">
             <img src="resources/img/dataset_economical_2.png" class="img-responsive img-plot">
           </div>
         </div>
@@ -117,22 +119,22 @@
             After removing non-EU countries and standardising their names, next step was to keep only the recent data
             column as datasets contain data from year 1960.
             Null value gaps were filed with most recent non-null data from previous years. Once all three datasets were
-            merged into one by country column, I got curious if there is simple linear correlation between country's gdp
+            merged into one by country column, I got curious if there is simple linear correlation between country's GDP
             and a size of a healthcare sector. Common sense would be to say, that wealthy country has more doctors than
-            the poor one. So I did some analysis in that subject.
+            the poor one. So, I did some analysis in that subject.
           </p>
           <div class="row plain-element">
             <div class="col s5 plain-element">
               <p>Dataset Cleaner: <a href="resources/cleaners/cleaning_healthcare.py" download>Cleaning Healthcare
                 Dataset </a></p>
-              <p>Dataset Analysis: <a href="resources/description/dataset_healthcare_analysis.py" download
+              <p>Dataset Analysis: <a href="resources/analysis/dataset_healthcare_analysis.py" download
                                       class="font-green"
               >Healthcare Dataset Analysis</a></p>
               <br>
 
             </div>
             <div class="col s1 plain-element"></div>
-            <div class="col s6 plain-element">
+            <div class="col s12 m6 plain-element">
 
             </div>
           </div>
@@ -200,71 +202,74 @@
               </table>
             </div>
             <div class="col s1 plain-element"></div>
-            <div class="col s6 plain-element">
+            <div class="col s12 m6 plain-element">
               <table>
                 <col>
                 <colgroup span="3"></colgroup>
                 <colgroup span="3"></colgroup>
                 <tr>
-                  <th colspan="3" class="center-align" scope="colgroup">Top 5 Highest</th>
-                  <th colspan="3" class="center-align" scope="colgroup">Top 5 Lowest</th>
+                  <th colspan="3" class="center-align" scope="colgroup" style="background-color: #4472C4; color: #fff">
+                    Top 5 Highest
+                  </th>
+                  <th colspan="3" class="center-align" scope="colgroup" style="background-color: #F4B084">Top 5 Lowest
+                  </th>
                 </tr>
                 <tr>
-                  <th scope="col">Physicians</th>
-                  <th scope="col">Nurses</th>
-                  <th scope="col">Beds</th>
-                  <th scope="col">Physicians</th>
-                  <th scope="col">Nurses</th>
-                  <th scope="col">Beds</th>
+                  <th scope="col" style="background-color: #4472C4; color: #fff">Physicians</th>
+                  <th scope="col" style="background-color: #4472C4; color: #fff">Nurses</th>
+                  <th scope="col" style="background-color: #4472C4; color: #fff">Beds</th>
+                  <th scope="col" style="background-color: #F4B084">Physicians</th>
+                  <th scope="col" style="background-color: #F4B084">Nurses</th>
+                  <th scope="col" style="background-color: #F4B084">Beds</th>
                 </tr>
                 <tr>
-                  <td>Greece</td>
-                  <td>Ireland</td>
-                  <td>Germany</td>
-                  <td>Cyprus</td>
-                  <td>Greece</td>
-                  <td>Sweden</td>
+                  <td style="background-color: #D9E1F2">Greece</td>
+                  <td style="background-color: #D9E1F2">Ireland</td>
+                  <td style="background-color: #D9E1F2">Germany</td>
+                  <td style="background-color: #FCE4D6">Cyprus</td>
+                  <td style="background-color: #FCE4D6">Greece</td>
+                  <td style="background-color: #FCE4D6">Sweden</td>
                 </tr>
                 <tr>
-                  <td>Austria</td>
-                  <td>Finland</td>
-                  <td>Bulgaria</td>
-                  <td>Romania</td>
-                  <td>Latvia</td>
-                  <td>Denmark</td>
+                  <td style="background-color: #D9E1F2">Austria</td>
+                  <td style="background-color: #D9E1F2">Finland</td>
+                  <td style="background-color: #D9E1F2">Bulgaria</td>
+                  <td style="background-color: #FCE4D6">Romania</td>
+                  <td style="background-color: #FCE4D6">Latvia</td>
+                  <td style="background-color: #FCE4D6">Denmark</td>
                 </tr>
                 <tr>
-                  <td>Portugal</td>
-                  <td>Germany</td>
-                  <td>Austria</td>
-                  <td>Poland</td>
-                  <td>Bulgaria</td>
-                  <td>Spain</td>
+                  <td style="background-color: #D9E1F2">Portugal</td>
+                  <td style="background-color: #D9E1F2">Germany</td>
+                  <td style="background-color: #D9E1F2">Austria</td>
+                  <td style="background-color: #FCE4D6">Poland</td>
+                  <td style="background-color: #FCE4D6">Bulgaria</td>
+                  <td style="background-color: #FCE4D6">Ireland</td>
                 </tr>
                 <tr>
-                  <td>x</td>
-                  <td>x</td>
-                  <td>x</td>
-                  <td>x</td>
-                  <td>x</td>
-                  <td>x</td>
+                  <td style="background-color: #D9E1F2">Lithuania</td>
+                  <td style="background-color: #D9E1F2">Luxembourg</td>
+                  <td style="background-color: #D9E1F2">Hungary</td>
+                  <td style="background-color: #FCE4D6">Malta</td>
+                  <td style="background-color: #FCE4D6">Cyprus</td>
+                  <td style="background-color: #FCE4D6">Spain</td>
                 </tr>
                 <tr>
-                  <td>x</td>
-                  <td>x</td>
-                  <td>x</td>
-                  <td>x</td>
-                  <td>x</td>
-                  <td>x</td>
+                  <td style="background-color: #D9E1F2">Germany</td>
+                  <td style="background-color: #D9E1F2">Belgium</td>
+                  <td style="background-color: #D9E1F2">Romania</td>
+                  <td style="background-color: #FCE4D6">Luxembourg</td>
+                  <td style="background-color: #FCE4D6">Spain</td>
+                  <td style="background-color: #FCE4D6">Italy</td>
                 </tr>
               </table>
             </div>
           </div>
           <br>
           <div class="row plain-element">
-            <div class="col s6 plain-element">
+            <div class="col s12 m6 plain-element">
               <p>
-                First step was to merge dataset with gdp column from economical dataset. Then I had to normalize the
+                First step was to merge dataset with GDP column from economical dataset. Then I had to normalize the
                 data to keep everything in range 0-1, where 1 is the top value and 0 is the lowest.
                 This way it'll be easier for me to compare different value sizes. Once shown on the graph to the right,
                 it's hard to say what top 10 countries have in common.
@@ -283,7 +288,7 @@
             </div>
             <div class="col s1 plain-element">
             </div>
-            <div class="col s6 plain-element">
+            <div class="col s12 m6 plain-element">
               <p>
                 Much clearer situation is when it comes to nursing staff. Ireland takes the lead in Europe and
                 generally, rich countries have more nurses than the poor ones.
@@ -295,11 +300,12 @@
           </div>
           <br>
           <div class="row plain-element">
-            <div class="col s6 plain-element">
+            <div class="col s12 m6 plain-element">
               Again, not that clear situation with hospital beds. But two conclusions can be made. First is that
               Post-soviet countries have more hospital beds due to the fact, that Soviet Union was preparing the
-              invasion on the West and those countries suppose to be the battlefield.
-              Secondly interesting observation is Sweden - I think that has a very low number of hospital beds forced government
+              invasion on the West and those countries supposed to be the battlefield.
+              Secondly interesting observation is Sweden - I think that has a very low number of hospital beds forced
+              government
               to seek herd immunity instead of taking a path of the other European countries.
 
             </div>
@@ -312,13 +318,13 @@
         </div>
       </div>
       <div class="row plain-element">
-        <div class="col s4 plain-element">
+        <div class="col s12 m4 plain-element">
 
         </div>
-        <div class="col s4 plain-element">
+        <div class="col s12 m4 plain-element">
 
         </div>
-        <div class="col s4 plain-element">
+        <div class="col s12 m4 plain-element">
 
         </div>
       </div>
@@ -335,15 +341,16 @@
               Here is the most controversial part of my analysis. First task was to transform the dataset the way,
               that we
               could see the number of days per restriction level per country.
-              In the future analysis I'll try to observe if there is any correlation between gdp and number of days in
-              lockdown. Also, I'll try to measure how effective was each restriction and if it's quick application prevented case spikes.
+              In the future analysis I'll try to observe if there is any correlation between GDP and number of days in
+              lockdown. Also, I'll try to measure how effective was each restriction and if it's quick application
+              prevented case spikes.
             </p>
           </div>
           <div class="row plain-element">
             <div class="col s5 plain-element">
               <p>Dataset Cleaner: <a href="resources/cleaners/cleaning_policies.py" download>Cleaning Policies
                 Dataset </a></p>
-              <p>Dataset Analysis: <a href="resources/description/dataset_policies_analysis.py" download
+              <p>Dataset Analysis: <a href="resources/analysis/dataset_policies_analysis.py" download
                                       class="font-green"
               >Policies Dataset Analysis</a></p>
             </div>
@@ -354,7 +361,7 @@
           </div>
           <br>
           <div class="row plain-element">
-            <div class="col s6 plain-element">
+            <div class="col s12 m6 plain-element">
               <table class="table table-bordered table-hover table-condensed">
                 <thead>
                 <tr>
@@ -364,10 +371,14 @@
                 </tr>
                 <tr>
                   <th title="Field #1">Country</th>
-                  <th title="Field #2">Level 0 <span style="font-size: 10px;"> <br> No measures<br> required </span></th>
-                  <th title="Field #3">Level 1 <span style="font-size: 10px;"> <br> Recommended<br> by government</span></th>
-                  <th title="Field #4">Level 2 <span style="font-size: 10px;"> <br> Required at <br> some levels</span></th>
-                  <th title="Field #5">Level 3 <span style="font-size: 10px;"> <br> Required <br> by government</span></th>
+                  <th title="Field #2">Level 0 <span style="font-size: 10px;"> <br> No measures<br> required </span>
+                  </th>
+                  <th title="Field #3">Level 1 <span style="font-size: 10px;"> <br> Recommended<br> by government</span>
+                  </th>
+                  <th title="Field #4">Level 2 <span style="font-size: 10px;"> <br> Required at <br> some levels</span>
+                  </th>
+                  <th title="Field #5">Level 3 <span style="font-size: 10px;"> <br> Required <br> by government</span>
+                  </th>
                 </tr>
                 </thead>
                 <tbody>
@@ -576,9 +587,12 @@
                 </tr>
                 <tr>
                   <th title="Field #1">Country</th>
-                  <th title="Field #2">Level 0 <span style="font-size: 10px;"> <br> No measures<br> required </span></th>
-                  <th title="Field #3">Level 1 <span style="font-size: 10px;"> <br> Recommended<br> by government</span></th>
-                  <th title="Field #4">Level 2 <span style="font-size: 10px;"> <br> Required at <br> some levels</span></th>
+                  <th title="Field #2">Level 0 <span style="font-size: 10px;"> <br> No measures<br> required </span>
+                  </th>
+                  <th title="Field #3">Level 1 <span style="font-size: 10px;"> <br> Recommended<br> by government</span>
+                  </th>
+                  <th title="Field #4">Level 2 <span style="font-size: 10px;"> <br> Required at <br> some levels</span>
+                  </th>
                 </tr>
                 </thead>
                 <tbody>
@@ -748,8 +762,17 @@
               </table>
             </div>
           </div>
+          <br><br><br>
+          <div class="row center-align">
+            <a class="btn btn-proceed" href="datasets-insights.html">
+              <span>Datasets Insights &nbsp;<i class="far fa-arrow-alt-circle-right"></i></span>
+            </a>
+            <br><br>
+          </div>
         </div>
+
       </div>
+
     </div>
   </div>
 

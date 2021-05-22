@@ -11,12 +11,6 @@ import requests
 from bs4 import BeautifulSoup
 
 """
----------------------------- OPENING MAIN COVID DATASET (INDEPENDABLE VARIABLE) --------------------------------
-"""
-
-dataset_covid =  pd.read_csv("dataset_covid_cleaned.csv")
-
-"""
 ---------------------------- COMMON FUNCTIONS  --------------------------------
 """
 
@@ -36,11 +30,12 @@ def country_checker(string):
 """
 
 
-
 """
 DATA SOURCE:                https://data.worldbank.org/indicator/SP.POP.TOTL?locations=EU
 Dataset that contains population of each country  
 """
+# Please note that csv files downloaded from worldbank website had a non relevant header in first  4 rows and  I have removed them manually from the files.
+# I haven't  used  skiprows=4 parameter in pd.read_csv method , but I am aware of this .
 dataset_population=pd.read_csv("dataset_population.csv")
 
 """
@@ -48,12 +43,6 @@ DATA SOURCE:                https://data.worldbank.org/indicator/NY.GDP.PCAP.CD?
 Dataset that contains GDP per capita of each country  
 """
 dataset_gdp=pd.read_csv("dataset_gdp.csv")
-
-"""
-DATA SOURCE:                https://data.worldbank.org/indicator/EN.POP.DNST     
-Dataset that contains population density (People per sqr.km) 
-"""
-dataset_density=pd.read_csv("dataset_density.csv")
 
 """
 DATA SOURCE: SCRAPED DATA- MEDIAN AGE   https://www.worlddata.info/average-age.php
@@ -78,8 +67,6 @@ for row in soup.find_all('tr'):
     
 dataset_median_age = pd.DataFrame(lst)
 dataset_median_age.columns=["Country", "Median age in years", "Population under 20 years old", "Life expectancy"]
-
-
 
 """
 ---------------------------- CLEANINIG DATASETS -------------------------------
@@ -111,24 +98,12 @@ dataset_gdp=dataset_gdp[dataset_gdp["is_eu"]==True]
 dataset_gdp=dataset_gdp[["Country Name", "2019"]]
 dataset_gdp=dataset_gdp.rename(columns={"Country Name":"country", "2019":"gdp"})
 
-
-"""
-CLEANING DENSITY DATASET
-"""
-dataset_density["Country Name"]=dataset_density["Country Name"].str.replace("Czech Republic", "Czechia")
-dataset_density["Country Name"]=dataset_density["Country Name"].str.replace("Slovak Republic", "Slovakia")
-dataset_density["Country Name"]=np.where(dataset_density["Country Code"]=="ESP","Spain",dataset_density["Country Name"] )
-dataset_density['is_eu']=dataset_density["Country Name"].apply(lambda x: country_checker(x))
-dataset_density=dataset_density[dataset_density["is_eu"]==True]
-dataset_density=dataset_density[["Country Name", "2018"]]
-dataset_density=dataset_density.rename(columns={"Country Name":"country", "2018":"density_per_sqr_km"})
-
 """
 CLEANING MEDIAN AGE DATASET
 """
 
 # Checking if there is data for all 27 countries by comparing lists eu_countries and countries in dataset_median_age
-countries=list(dataset_median_age["Country"])      # CyprusLithuaniaLuxembourg Slovakia
+countries=list(dataset_median_age["Country"])      # Cyprus Lithuania Slovakia
 
 for element in eu_countries:
     if element in countries:
@@ -136,26 +111,25 @@ for element in eu_countries:
     else:
         print (element)
         
-# Data is missing for 4 EU countries, missing values filled manually with accual data from websites.
+# Data is missing for 3 EU countries, missing values filled manually with accual data from websites.
 # Cyprus 2015=34.9 closes median age to our median dataset (2013)   https://www.worldometers.info/world-population/cyprus-population/ 
 # Slovakia   2015= 39.2                                             https://www.worldometers.info/world-population/slovakia-population/
-# Luxembourg  2015=39.3                                             https://www.worldometers.info/world-population/luxembourg-population/
 # Lithuania  2018=43.7                                              https://en.wikipedia.org/wiki/List_of_countries_by_median_age
  
 # Creating list of missing countries data
-missing_countries_data=[["Cyprus", "34.9"],["Slovakia","39.2" ], ["Luxembourg","39.3"] , ["Lithuania","43.7"]]
+missing_countries_data=[["Cyprus", "34.9"],["Slovakia","39.2" ] , ["Lithuania","43.7"]]
 # Converting Dataframe from list of lists
 missing_countries_data=pd.DataFrame.from_records(missing_countries_data, columns=["Country", "Median age in years"])
-dataset_median_age=dataset_median_age[["Country", "Median age in years"]]
+#  Using iloc function to slice dataset by column , as we only need Country and Median age columns
+dataset_median_age=dataset_median_age.iloc[:,0:2]
 dataset_full_countries = pd.concat([missing_countries_data, dataset_median_age])
-
+dataset_full_countries =dataset_full_countries.rename(columns={"Country":"country","Median age in years":"median age in years" })
 
 """
----------------------------- MERGING DEPENDABLE VARIABLES DATASETS (POPULATION, GDP, DENSITY, MEDIAN AGE) WITH MAIN COVID DATASET-------------------------------
+---------------------------- MERGING INDEPENDABLE VARIABLES DATASETS POPULATION, GDP, MEDIAN AGE------------------------------
 """
 
-dataset=dataset_population.merge(dataset_gdp, on="country").merge(dataset_density, on="country")   
-
+dataset=dataset_population.merge(dataset_gdp, on="country").merge(dataset_full_countries, on="country")   
 
 dataset.to_csv("dataset_economical_cleaned.csv", index=False)
 

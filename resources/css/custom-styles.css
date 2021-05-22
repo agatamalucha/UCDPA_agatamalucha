@@ -287,11 +287,18 @@ td {
 
 @media(max-width:1700px) {
 	.top-navbar {
-
+       padding-left: 2%;
+        padding-right: 2%;
 	}
 	.navbar-header {
 		width: 33%;
 	}
+
+	#main-page {
+	    width: 96%;
+	}
+
+
 }
 
 
@@ -311,6 +318,14 @@ td {
 		width: 100%;
 	}
 
-
+    .btn-proceed {
+    width: 50%;
+    }
 }
 
+@media(max-width:700px) {
+
+    .btn-proceed {
+    width: 80%;
+    }
+}

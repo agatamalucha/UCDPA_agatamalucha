@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Covid Pandemic Analysis</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css"
+          integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/cb5db23bd5.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="resources/css/custom-styles.css" rel="stylesheet"/>
+</head>
+<body>
+<div>
+    <!-- NAVIGATION -->
+    <nav class="row navbar navbar-default top-navbar" role="navigation">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="index.html">
+                <strong> Covid Pandemic Analysis</strong>
+            </a>
+        </div>
+    </nav>
+    <div id="main-page">
+        <div class="row row-title center-align">
+            <h1 class="underline-grey">Datasets Insights</h1>
+        </div>
+        <br><br>
+        <div class="row row-description">
+            <div class="col s12 plain-element">
+                <div class="row plain-element">
+                </div>
+                <div class="card card-transparent">
+                    <p>
+                        In this part of my project, I would like find out how all European union counties have managed
+                        Covid in analysed
+                        period of time by comparing total number of Covid cases and deaths per 10,000 population with
+                        countries own
+                        characteristics.
+                    </p>
+                    <p>Dataset Insights: <a class="font-green" href="resources/insights/insights.py" download>Datasets
+                        Insights </a></p>
+                    <br>
+                    <div class="row plain-element">
+                        <h2>Total Covid cases vs GDP per capita</h2>
+                    </div>
+                    <div class="col s12 m4 plain-element">
+                        <p>
+                            First of all, I wanted to check if there is correlation between number of cases in each
+                            country and their
+                            GDP per capita. In this investigation I haven’t noticed any obvious visual correlations. The
+                            only thing
+                            that is noticeable is 4 out of 5 the richest counties with highest GDP per capita ( please
+                            see Economical
+                            Dataset analysis) Ireland, Denmark, Finland has the total lowest number of COVID cases.
+                        </p>
+                    </div>
+                    <div class="col s1 plain-element">
+                    </div>
+                    <div class="col s7 plain-element">
+                        <img src="resources/img/plot_gdp_cases.png" class="img-responsive img-plot">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br><br>
+        <div class="row row-description">
+            <div class="col s12 plain-element">
+                <div class="row plain-element">
+                    <h2> Total Covid deaths vs Median Age</h2>
+                </div>
+                <div class="card card-transparent">
+                    <div class="row plain-element">
+
+
+                        <div class="col s7 plain-element">
+                            <img src="resources/img/plot_median_age_deaths.png" class="img-responsive img-plot">
+                        </div>
+                        <div class="col s1 plain-element"></div>
+                        <div class="col s5 plain-element">
+                            <p>
+                                In this pair of features you can notice not definite but noticeable relation. Number of
+                                Covid deaths is
+                                slightly falling as falling the median age of population in the country. Countries with
+                                higher median age
+                                experienced higher number of Covid cases in total.
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row row-description">
+            <div class="row plain-element">
+                <h2> Total Covid deaths vs Number of days in the highest school closure restriction </h2>
+            </div>
+            <div class="row plain-element">
+                <p>
+                    On this chart I can see that countries with number of days higher than average in school
+                    lockdown have
+                    experienced high number of deaths (Czechia, Slovenia, Slovakia). On the other side of
+                    chart there are
+                    countries like Latvia, Germany, Ireland, Greece, Malta with also high number of school
+                    closed days but
+                    less than average deaths. I will look into those counties in final chart, as those group
+                    of countries
+                    might have more things in common.
+                </p>
+            </div>
+            <div class="row plain-element">
+                <img src="resources/img/plot_deaths_restrictions.png" class="img-responsive img-plot">
+            </div>
+        </div>
+        <br>
+        <div class="row row-description">
+            <div class="row plain-element">
+                <h2> Number of Nursing staff vs Severity in restrictions with normalized data </h2>
+            </div>
+            <div class="row plain-element">
+                <p>
+                    On this chart there is visible relation between number of nursing staff and number of days in
+                    school/ internal movement lockdown. You can see that countries with high level of staffing have
+                    experienced lower level of restriction as number of nurses is falling countries implemented longer
+                    and more server lockdown. There is one more interesting fact that I have noticed that when I taking
+                    into account GDP per capita, wealthy countries Ireland, Germany , Finland , Luxembourg have high
+                    number of staff.
+                </p>
+            </div>
+            <div class="row plain-element">
+                <img src="resources/img/plot_nurses_restrictions.png" class="img-responsive img-plot">
+            </div>
+        </div>
+        <br>
+        <div class="row row-description">
+            <div class="row plain-element">
+                <h2> Total Covid deaths vs Number of days in the highest internal movement and school closure
+                    restriction with normalized data </h2>
+            </div>
+            <div class="row plain-element">
+                <p>
+                    In this chart I compared new number of deaths with number of days in both internal movement
+                    restriction and school closures. Again, the worst situation can be observed in eastern European
+                    countries even though they had longer /higher level of restrictions. On the other hand, we have
+                    Finland, Denmark, Malta, Estonia. Even though they had no restrictions they had low number of
+                    deaths. Ireland, German and Greece kept their restriction for longer and that helped them to keep
+                    number of deaths lower than average in EU.
+                </p>
+            </div>
+            <div class="row plain-element">
+                <img src="resources/img/plot_deaths_restrictions.png" class="img-responsive img-plot">
+            </div>
+        </div>
+        <br>
+        <div class="row row-description">
+            <div class="row plain-element">
+                <h2> Daily Covid cases vs. school closures and movement restrictions. </h2>
+            </div>
+            <div class="row plain-element">
+                <p>
+                    I am continuing analysing impact of policies on course of Covid cases through out the whole period
+                    of pandemic. Covid was a new disease, so as precaution all European countries closed schools and
+                    restricted internal movements, even though there was a very low number of new Covid cases. Europe
+                    have started extreme lockdown. This can be observed between March 2020 and May 2020. As we were
+                    learning more about Covid and reporting low number of cases, all EU started ceasing on restrictions.
+                    You can see that particularly between July-Sept 2020. The next turning point happened in
+                    October/November 2020, Covid cases started dramatically increase. Countries decided to introduce
+                    lockdowns again, however in less strict conditions. Prolonged period of lockdown at the start of
+                    pandemic, probably has put counties in economic trouble and also politicians started to encounter
+                    society resistance on severe lockdown. From January 2021 up to the current date the number of cases
+                    remained quite high with higher level of restrictions. Only in April /May 2021 countries have
+                    dropped restrictions as they strongly think that implementation of vaccination against Covid will
+                    suppress the disease.
+                </p>
+            </div>
+            <div class="row plain-element">
+                <img src="resources/img/plot_daily_cases_restrictions.png" class="img-responsive img-plot">
+            </div>
+        </div>
+
+
+        <br><br>
+    </div>
+</div>
+<div class="footer">
+    <p>All Rights Reserved • Agata Malucha</p>
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+
+</body>
+</html>
+
