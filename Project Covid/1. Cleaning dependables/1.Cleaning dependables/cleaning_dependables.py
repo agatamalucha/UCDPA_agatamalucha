@@ -30,7 +30,9 @@ dataset['is_eu']=dataset["Country"].apply(lambda x: country_checker(x))
 dataset=dataset[dataset["is_eu"]==True]
 
 # Removing unneccessary columns from dataset
-dataset=dataset[["Date_reported","Country", "New_cases","New_deaths" ]]
+dataset = dataset.iloc[:, [0,2,4,6 ]]
+# dataset=dataset[["Date_reported","Country", "New_cases","New_deaths" ]]
+
 
 # Renaming columns
 dataset=dataset.rename(columns={"Date_reported":"date","Country":"country", "New_cases":"cases", "New_deaths":"deaths"   })
