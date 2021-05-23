@@ -14,7 +14,7 @@
 ### Folders 
 
 #### 1. Cleaning datasets folder
-
+<br>
 1. Cleaning dependables  - In this folder I have cleaned Covid cases and deaths data.
 <br>
 2. Cleaning economical data - This folder contains Web Scrapping code for "Median age" data and cleaning GDP, population, median age  data 
